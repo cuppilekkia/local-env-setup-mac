@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 SUDO_USER=$(whoami)
+NODE_VERSION=16
+
 # list fo brew packs
 PACKAGES=(
     git
@@ -8,7 +10,7 @@ PACKAGES=(
     ctop
     tmux
     readline
-    node@14
+    node@$NODE_VERSION
     npm
     aws-cdk
     aws-sam-cli	
@@ -67,11 +69,12 @@ fi
 
 # Update homebrew recipes
 brew update
+brew tap aws/tap
 
 echo "Installing packages..."
 brew install ${PACKAGES[@]}
 
-brew link --force node@14
+brew link --force node@$NODE_VERSION
 
 
 echo "Installing cask..."
