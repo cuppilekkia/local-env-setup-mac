@@ -22,6 +22,7 @@ PACKAGES=(
     xz
     yarn
     wget
+    hashicorp/tap/terraform
 )
 
 # list of brew casks packs
@@ -70,6 +71,7 @@ fi
 # Update homebrew recipes
 brew update
 brew tap aws/tap
+brew tap hashicorp/tap
 
 echo "Installing packages..."
 brew install ${PACKAGES[@]}
