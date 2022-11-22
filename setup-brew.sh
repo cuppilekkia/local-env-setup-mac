@@ -23,6 +23,8 @@ PACKAGES=(
     yarn
     wget
     hashicorp/tap/terraform
+    jandedobbeleer/oh-my-posh/oh-my-posh
+    exa
 )
 
 # list of brew casks packs
@@ -43,6 +45,7 @@ CASKS=(
     the-unarchiver
     transmission
     zoom
+    fig
 )
 
 # python packs
