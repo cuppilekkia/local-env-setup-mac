@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 SUDO_USER:=$(whoami)
-NODE_VERSION:=16
 
 # list fo brew packs
 PACKAGES=(
@@ -10,8 +9,6 @@ PACKAGES=(
     ctop
     tmux
     readline
-    node@$NODE_VERSION
-    npm
     aws-cdk
     aws-sam-cli	
     awscli
@@ -63,18 +60,17 @@ echo "Starting setup"
 echo "XCode Install"
 xcode-select --install
 
-
 # Check for Homebrew to be present, install if it's missing
 if test ! $(which brew); then
     echo "Installing homebrew..."
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/$(SUDO_USER)/.zprofile
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/$SUDO_USER/.zprofile
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # Fix brew permissions
-sudo chown -R $(SUDO_USER) /opt/homebrew
+sudo chown -R $SUDO_USER /opt/homebrew
 
 # Update homebrew recipes
 brew update
@@ -83,9 +79,6 @@ brew tap hashicorp/tap
 
 echo "Installing packages..."
 brew install ${PACKAGES[@]}
-
-brew link --force node@$NODE_VERSION
-
 
 echo "Installing cask..."
 sudo -u $SUDO_USER brew install --cask ${CASKS[@]}
@@ -98,6 +91,9 @@ sudo -u $SUDO_USER pip3 install ${PYTHON_PACKAGES[@]}
 # clean up
 echo "Cleaning up..."
 brew cleanup
+
+echo "Installing NVM"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 
 echo "Configuring OS..."
 # Require password as soon as screensaver or sleep mode starts
