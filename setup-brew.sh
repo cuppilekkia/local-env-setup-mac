@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-SUDO_USER=$(whoami)
-NODE_VERSION=16
+SUDO_USER:=$(whoami)
+NODE_VERSION:=16
 
 # list fo brew packs
 PACKAGES=(
@@ -68,8 +68,13 @@ xcode-select --install
 if test ! $(which brew); then
     echo "Installing homebrew..."
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/$(SUDO_USER)/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+# Fix brew permissions
+sudo chown -R $(SUDO_USER) /opt/homebrew
 
 # Update homebrew recipes
 brew update
@@ -93,8 +98,6 @@ sudo -u $SUDO_USER pip3 install ${PYTHON_PACKAGES[@]}
 # clean up
 echo "Cleaning up..."
 brew cleanup
-
-
 
 echo "Configuring OS..."
 # Require password as soon as screensaver or sleep mode starts
