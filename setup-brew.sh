@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SUDO_USER:=$(whoami)
+SUDO_USER=$(whoami)
 
 # list fo brew packs
 PACKAGES=(
@@ -94,6 +94,9 @@ brew cleanup
 
 echo "Installing NVM"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+
+echo "Installing Amplify CLI"
+curl -sL https://aws-amplify.github.io/amplify-cli/install | bash && $SHELL
 
 echo "Configuring OS..."
 # Require password as soon as screensaver or sleep mode starts
