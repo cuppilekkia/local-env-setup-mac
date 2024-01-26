@@ -45,14 +45,6 @@ CASKS=(
     fig
 )
 
-# python packs
-PYTHON_PACKAGES=(
-    ipython
-    virtualenv
-    virtualenvwrapper
-)
-
-
 # Setup script for setting up a new macos machine
 echo "Starting setup"
 
@@ -83,30 +75,9 @@ brew install ${PACKAGES[@]}
 echo "Installing cask..."
 sudo -u $SUDO_USER brew install --cask ${CASKS[@]}
 
-echo "Installing python packs..."
-sudo -u $SUDO_USER pip3 install --upgrade pip
-sudo -u $SUDO_USER pip3 install --upgrade setuptools
-sudo -u $SUDO_USER pip3 install ${PYTHON_PACKAGES[@]}
-
 # clean up
 echo "Cleaning up..."
 brew cleanup
-
-echo "Installing NVM"
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-
-echo "Installing Amplify CLI"
-curl -sL https://aws-amplify.github.io/amplify-cli/install | bash && $SHELL
-
-echo "Configuring OS..."
-# Require password as soon as screensaver or sleep mode starts
-defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
-# Show filename extensions by default
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-# Enable tap-to-click
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 echo "Setup completed!"
 echo "Take your time to install DOCKER manually :)"

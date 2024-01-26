@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Zsh config
 echo "Adding configs on ZSH"
 cat configs/posh-config >> ~/.zshrc
