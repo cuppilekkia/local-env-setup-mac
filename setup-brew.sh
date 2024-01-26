@@ -21,7 +21,7 @@ PACKAGES=(
     wget
     hashicorp/tap/terraform
     jandedobbeleer/oh-my-posh/oh-my-posh
-    exa
+    eza
 )
 
 # list of brew casks packs
