@@ -6,43 +6,43 @@ SUDO_USER=$(whoami)
 PACKAGES=(
     git
     golang
-    ctop
-    tmux
-    readline
+    # dtop
+    # tmux
+    # readline
     aws-cdk
     aws-sam-cli	
     awscli
-    mysql
-    sqlite
+    # mysql
+    # sqlite
     python
     python3
-    xz
+    # xz
     yarn
     wget
     hashicorp/tap/terraform
-    jandedobbeleer/oh-my-posh/oh-my-posh
+    # jandedobbeleer/oh-my-posh/oh-my-posh
     eza
 )
 
 # list of brew casks packs
 CASKS=(
-    iterm2
+    # iterm2
     adobe-acrobat-reader
-    skype
-    slack
-    spotify
+    # skype
+    # slack
+    # spotify
     visual-studio-code
-    steam
+    # steam
     postman
-    google-chrome
-    firefox
-    notion
-    alfred
+    # google-chrome
+    # firefox
+    # notion
+    # alfred
     imageoptim
-    the-unarchiver
-    transmission
-    zoom
-    fig
+    # the-unarchiver
+    # transmission
+    # zoom
+    # fig
 )
 
 # Setup script for setting up a new macos machine

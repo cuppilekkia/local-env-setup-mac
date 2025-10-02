@@ -1,4 +1,5 @@
-.PHONY: run setup-zsh setup-nvm setup-eza
+.PHONY: run setup-zsh setup-nvm setup-eza setup-os setup-amplify setup-py
+
 run:
 	chmod +x ./setup-brew.sh && ./setup-brew.sh
 	
