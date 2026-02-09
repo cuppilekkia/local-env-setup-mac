@@ -26,23 +26,23 @@ PACKAGES=(
 
 # list of brew casks packs
 CASKS=(
-    # iterm2
-    adobe-acrobat-reader
-    # skype
-    # slack
+    iterm2
+    # adobe-acrobat-reader
+    skype
+    slack
     # spotify
-    visual-studio-code
-    # steam
-    postman
+    # visual-studio-code
+    steam
     # google-chrome
-    # firefox
+    firefox
     # notion
     # alfred
     imageoptim
-    # the-unarchiver
-    # transmission
-    # zoom
-    # fig
+    the-unarchiver
+    transmission
+    zoom
+    bruno
+    obsidian
 )
 
 # Setup script for setting up a new macos machine
