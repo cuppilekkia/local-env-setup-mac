@@ -43,6 +43,8 @@ CASKS=(
     zoom
     bruno
     obsidian
+    cluade
+    claude-code
 )
 
 # Setup script for setting up a new macos machine
