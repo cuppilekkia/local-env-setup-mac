@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 echo "Configuring OS..."
 # Require password as soon as screensaver or sleep mode starts

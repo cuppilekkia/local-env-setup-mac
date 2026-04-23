@@ -1,15 +1,14 @@
 #!/bin/bash
+set -e
 
-# python packs
+# python packages
 PYTHON_PACKAGES=(
     ipython
     virtualenv
     virtualenvwrapper
 )
 
-echo "Installing python packs..."
-sudo -u $SUDO_USER pip3 install --upgrade pip
-sudo -u $SUDO_USER pip3 install --upgrade setuptools
-sudo -u $SUDO_USER pip3 install ${PYTHON_PACKAGES[@]}
-
-exec zsh
+echo "Installing python packages..."
+pip3 install --upgrade pip
+pip3 install --upgrade setuptools
+pip3 install "${PYTHON_PACKAGES[@]}"

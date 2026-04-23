@@ -1,49 +1,31 @@
 #!/usr/bin/env bash
+set -e
 
-SUDO_USER=$(whoami)
-
-# list fo brew packs
+# list of brew packages
 PACKAGES=(
     git
     golang
-    # dtop
-    # tmux
-    # readline
     aws-cdk
-    aws-sam-cli	
+    aws-sam-cli
     awscli
-    # mysql
-    # sqlite
     python
     python3
-    # xz
     yarn
     wget
     hashicorp/tap/terraform
-    # jandedobbeleer/oh-my-posh/oh-my-posh
     eza
 )
 
-# list of brew casks packs
+# list of brew casks
 CASKS=(
     iterm2
-    # adobe-acrobat-reader
-    skype
-    slack
-    # spotify
-    # visual-studio-code
-    steam
-    # google-chrome
-    firefox
-    # notion
-    # alfred
     imageoptim
     the-unarchiver
     transmission
-    zoom
     bruno
     obsidian
-    cluade
+    visual-studio-code
+    claude
     claude-code
 )
 
@@ -52,30 +34,31 @@ echo "Starting setup"
 
 # install xcode CLI
 echo "XCode Install"
-xcode-select --install
+xcode-select --install 2>/dev/null || true
 
 # Check for Homebrew to be present, install if it's missing
-if test ! $(which brew); then
+if test ! "$(which brew)"; then
     echo "Installing homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/$SUDO_USER/.zprofile
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # Fix brew permissions
-sudo chown -R $SUDO_USER /opt/homebrew
+sudo chown -R "$(whoami)" /opt/homebrew
 
 # Update homebrew recipes
 brew update
+brew upgrade
 brew tap aws/tap
 brew tap hashicorp/tap
 
 echo "Installing packages..."
-brew install ${PACKAGES[@]}
+brew install "${PACKAGES[@]}"
 
-echo "Installing cask..."
-sudo -u $SUDO_USER brew install --cask ${CASKS[@]}
+echo "Installing casks..."
+brew install --cask "${CASKS[@]}"
 
 # clean up
 echo "Cleaning up..."

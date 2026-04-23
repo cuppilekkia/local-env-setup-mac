@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 # Install oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -7,9 +9,10 @@ brew install jandedobbeleer/oh-my-posh/oh-my-posh
 
 # Zsh config
 echo "Adding configs on ZSH"
-cat configs/posh-config >> ~/.zshrc
+if ! grep -q "oh-my-posh init zsh" ~/.zshrc; then
+    cat configs/posh-config >> ~/.zshrc
+fi
 
-exec zsh
 oh-my-posh font install Meslo
 
 echo "Font installed."
