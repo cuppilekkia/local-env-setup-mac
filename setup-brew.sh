@@ -3,30 +3,28 @@ set -e
 
 # list of brew packages
 PACKAGES=(
+    aws-cdk
+    awscli
+    eza
     git
     golang
-    aws-cdk
-    aws-sam-cli
-    awscli
-    python
+    opentofu
     python3
-    yarn
     wget
-    hashicorp/tap/terraform
-    eza
 )
 
 # list of brew casks
 CASKS=(
-    iterm2
-    imageoptim
-    the-unarchiver
-    transmission
     bruno
-    obsidian
-    visual-studio-code
     claude
     claude-code
+    cyberduck
+    imageoptim
+    iterm2
+    obsidian
+    tailscale-app
+    the-unarchiver
+    visual-studio-code
 )
 
 # Setup script for setting up a new macos machine
@@ -52,7 +50,6 @@ sudo chown -R "$(whoami)" /opt/homebrew
 brew update
 brew upgrade
 brew tap aws/tap
-brew tap hashicorp/tap
 
 echo "Installing packages..."
 brew install "${PACKAGES[@]}"
