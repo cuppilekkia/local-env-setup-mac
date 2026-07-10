@@ -15,6 +15,7 @@ PACKAGES=(
 
 # list of brew casks
 CASKS=(
+    adobe-acrobat-reader
     bruno
     claude
     claude-code
